@@ -1,0 +1,30 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    border: 2px red solid;
+}
+
+.nav>ul {
+    display: flex;
+}
+
+.nav>ul>li {
+    list-style: none;
+    padding: 10px;
+}
+
+.card {
+    border: 2px red solid;
+    width: 200px;
+    padding: 20px;
+    margin: 5px;
+}
+
+.card>img {
+    width: 100%;
+}
+
+.restro {
+    display: flex;
+    flex-wrap: wrap;
+}
