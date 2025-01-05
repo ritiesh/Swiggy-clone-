@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { restaurentList } from "../constant";
 import Restrocard from "./Restrocard"
 import Skimmer from "./Shimmer"
+import { Link } from "react-router-dom"
 
 
 function filterData(searchText, restaurent) {
@@ -34,8 +35,8 @@ const Body = () => {
   //conditional rendering 
   //if restaurent has no data load shimmer UI
   //if restaurent has data load actual UI
-  if(filterrestaurent.length===0)return <h1>No result found!!</h1>
- if(allrestaurent.length===0)return null
+  // if(filterrestaurent.length===0)return <h1>No result found!!</h1>
+  //  if(allrestaurent.length===0)return null
 
   return (allrestaurent.length === 0) ? <Skimmer /> : (
     <>
@@ -59,7 +60,7 @@ const Body = () => {
       </div>
       <div className="restro">
         {filterrestaurent?.map((restaurentList) => {
-          return <Restrocard {...restaurentList.info} key={restaurentList.info.id} />
+          return <Link to={"/restaurent/" + restaurentList.info.id} key={restaurentList.info.id}><Restrocard {...restaurentList.info} /></Link>
         })}
       </div>
     </>

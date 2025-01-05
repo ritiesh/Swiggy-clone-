@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { Link } from "react-router-dom"
+import Logo from "../assest/img/food.jpg"
 
 const Title = () => (
-  <a href="/"><img alt="nothing" src="https://yt3.googleusercontent.com/FFffswAYvW-eIAKgSmGh85tMKFqp6SvLSSvx3BjvqJO2seP9pJnEeXWu_5HAMi82bZnDoVBWEA=s900-c-k-c0x00ffffff-no-rj" width="100px" height="100px"></img></a>
+  <a href="/"><img alt="nothing" src={Logo} width="100px" height="100px"></img></a>
 )
 const Header = () => {
   const [loggedIn, setLoggedIn] = useState(true)
@@ -11,8 +13,9 @@ const Header = () => {
 
       <nav className="nav">
         <ul>
-          <li>home</li>
-          <li>About</li>
+          <Link to="/">home</Link>
+          <Link to="/about" >About</Link>
+          <Link to="/contact">Contact</Link>
           <li>cart</li>
         </ul>
       </nav>
