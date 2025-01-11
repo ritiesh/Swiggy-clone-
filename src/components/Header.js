@@ -1,24 +1,28 @@
 import { useState } from "react";
 import { Link } from "react-router-dom"
-import Logo from "../assest/img/food.jpg"
+import Logo from "../assest/img/logo1.png"
+import useOnline from "../utils/useOnline"
 
 const Title = () => (
-  <a href="/"><img alt="nothing" src={Logo} width="100px" height="100px"></img></a>
+  <a href="/"><img className="h-28 p-2 sm:max-2xl" alt="nothing" src={Logo} ></img></a>
 )
 const Header = () => {
+  const isOnline = useOnline()
   const [loggedIn, setLoggedIn] = useState(true)
   return (
-    <div className="header">
+    <div className="flex justify-between bg-green-100 shadow-md sm:bg-purple-300">
       <Title />
-
-      <nav className="nav">
-        <ul>
-          <Link to="/">home</Link>
-          <Link to="/about" >About</Link>
-          <Link to="/contact">Contact</Link>
-          <li>cart</li>
+      <div>
+        <ul className="flex py-10">
+          <li className="px-2"><Link to="/">Home</Link></li>
+          <Link to="/about" ><li className="px-2">About</li></Link>
+          <Link to="/contact"><li className="px-2">contact</li></Link>
+          <li className="px-2">cart</li>
+          <Link to="/instamart"><li className="px-2">Instamart</li></Link>
         </ul>
-      </nav>
+      </div>
+
+      {isOnline ? '🟩' : '🔴'}
       {loggedIn ? <button onClick={() => setLoggedIn(!loggedIn)}>Logout</button> : <button onClick={() => setLoggedIn(!loggedIn)}>Login</button>}
 
 

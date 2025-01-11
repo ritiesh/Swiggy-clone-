@@ -1,4 +1,10 @@
 export const IMG_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+
+export const FETCH_MENU_URL_1="https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.4358011&lng=81.846311&restaurantId=";
+
+export const FETCH_MENU_URL_2="&submitAction=ENTER"
+
+
 export const restaurentList = [
   
     {
