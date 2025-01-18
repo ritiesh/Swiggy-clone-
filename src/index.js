@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { lazy, Suspense } from 'react'
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -12,11 +12,13 @@ import Profile from "./components/ProfileClass"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Shimmer from './components/Shimmer';
 
+
 const About = lazy(() => import("./components/About"))
 
 const Instamart = lazy(() => import("./components/Instamart"))
 
 const appRouter = createBrowserRouter([
+  
   {
     path: "/",
     element: <App />,
@@ -24,7 +26,9 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />
+        element: <Body user={{
+          name:"ritiesh"
+        }}/>
       },
       {
         path: "/about",

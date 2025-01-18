@@ -4,13 +4,15 @@ import Restrocard from "./Restrocard"
 import Skimmer from "./Shimmer"
 import { Link } from "react-router-dom"
 import { filterData } from "../utils/helper"
-
+import { useContext } from "react";
+import UserContext from "../utils/Usercontext";
 
 
 const Body = () => {
   const [allrestaurent, setallRestaurent] = useState([])
   const [filterrestaurent, setfilterRestaurent] = useState([])
   const [searchText, setSearchText] = useState("")
+  const { user, setUser } = useContext(UserContext)
 
 
   useEffect(() => {
@@ -23,7 +25,7 @@ const Body = () => {
     const json = await data.json()
 
 
-    console.log(json.data)
+    // console.log(json.data)
     const rest = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     setallRestaurent(rest)
     setfilterRestaurent(rest)
@@ -57,8 +59,17 @@ const Body = () => {
           setfilterRestaurent(data)
         }
         }>search</button>
+        <input value={user.email} onChange={e => setUser({
+          ...user,
+          email: e.target.value
+        })}></input>
+        <input value={user.name} onChange={e => setUser({
+          ...user,
+          name: e.target.value,
+
+        })}></input>
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap bg-green-100">
         {filterrestaurent?.map((restaurentList) => {
           return <Link to={"/restaurent/" + restaurentList.info.id} key={restaurentList.info.id}><Restrocard {...restaurentList.info} /></Link>
         })}
