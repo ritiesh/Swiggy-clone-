@@ -11,6 +11,7 @@ import RestaurentMenu from './components/RestaurentMenu';
 import Profile from "./components/ProfileClass"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Shimmer from './components/Shimmer';
+import Cart from "./components/Cart"
 
 
 const About = lazy(() => import("./components/About"))
@@ -52,6 +53,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/instamart",
         element: <Suspense fallback={<Shimmer />}><Instamart /></Suspense>
+      },
+      {
+        path:"/cart",
+        element:<Cart/>
       }
 
     ]

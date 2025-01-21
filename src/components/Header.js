@@ -4,6 +4,7 @@ import Logo from "../assest/img/logo1.png"
 import useOnline from "../utils/useOnline"
 import UserContext from "../utils/Usercontext";
 import { useContext } from "react";
+import { useSelector } from "react-redux";
 
 const Title = () => (
   <a href="/"><img className="h-28 p-2 sm:max-2xl" alt="nothing" src={Logo} ></img></a>
@@ -13,6 +14,9 @@ const Header = () => {
   const { user } = useContext(UserContext)
   const isOnline = useOnline()
   const [loggedIn, setLoggedIn] = useState(true)
+
+  const cartItems=useSelector(store=>store.cart.items)
+  console.log(cartItems)
   return (
     <div className="flex justify-between bg-green-100 shadow-md">
       <Title />
@@ -21,8 +25,9 @@ const Header = () => {
           <li className="px-2"><Link to="/">Home</Link></li>
           <Link to="/about" ><li className="px-2">About</li></Link>
           <Link to="/contact"><li className="px-2">contact</li></Link>
-          <li className="px-2">cart</li>
+          
           <Link to="/instamart"><li className="px-2">Instamart</li></Link>
+          <Link to="/cart"><li className="px-2">cart - {cartItems.length} items</li></Link>
         </ul>
       </div>
 

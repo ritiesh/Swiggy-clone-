@@ -6,7 +6,8 @@ import Footer from "./components/Footer"
 import { Outlet } from "react-router-dom"
 import UserContext from "./utils/Usercontext"
 
-
+import {Provider} from "react-redux"
+import store from "./utils/store"
 
 
 
@@ -16,13 +17,13 @@ function App() {
     email: "ritiesh123@gmail.com"
   })
   return (
-    <React.Fragment>
+    <Provider store={store}>
       <UserContext.Provider value={{user:user,setUser:setUser}}>
         <Header />
         <Outlet />
         <Footer />
       </UserContext.Provider>
-    </React.Fragment>
+    </Provider>
   );
 }
 
