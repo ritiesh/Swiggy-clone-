@@ -6,7 +6,7 @@ const useRestaurent = (id) => {
   const [restaurent, setRestaurent] = useState(null)
   useEffect(() => {
     getRestaurentMenu()
-  }, [])
+  })
   async function getRestaurentMenu() {
     const data = await fetch(FOODFIRE_MENU_API_URL + id)
 
