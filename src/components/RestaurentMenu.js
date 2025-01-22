@@ -15,11 +15,7 @@ const RestaurentMenu = () => {
   const {
     cloudinaryImageId,
     name,
-    avgRatingString,
-    totalRatingsString,
-    cuisines,
-    locality,
-    sla,areaName
+    avgRatingString,areaName
   } = restaurent?.cards[2]?.card?.card?.info || {};
 
   const cards =
@@ -49,11 +45,8 @@ const RestaurentMenu = () => {
         {itemCards.length ? (
           itemCards.map((item) => {
             const {
-              id,
+              
               name,
-              price,
-              defaultPrice,
-              ratings,
               imageId,
               description,
             } = item.card.info;

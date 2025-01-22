@@ -4,15 +4,15 @@ import Restrocard from "./Restrocard"
 import Skimmer from "./Shimmer"
 import { Link } from "react-router-dom"
 import { filterData } from "../utils/helper"
-import { useContext } from "react";
-import UserContext from "../utils/Usercontext";
+// import { useContext } from "react";
+// import UserContext from "../utils/Usercontext";
 
 
 const Body = () => {
   const [allrestaurent, setallRestaurent] = useState([])
   const [filterrestaurent, setfilterRestaurent] = useState([])
   const [searchText, setSearchText] = useState("")
-  const { user, setUser } = useContext(UserContext)
+  // const { user, setUser } = useContext(UserContext)
 
 
   useEffect(() => {
