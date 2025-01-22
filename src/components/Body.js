@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { restaurentList } from "../constant";
+
 import Restrocard from "./Restrocard"
 import Skimmer from "./Shimmer"
 import { Link } from "react-router-dom"
@@ -41,10 +41,10 @@ const Body = () => {
 
   return (allrestaurent.length === 0) ? <Skimmer /> : (
     <>
-      <div className="Search-container px-2 py-2 bg-green-100 my-2">
+      <div className="px-2 py-2 my-2 m-96">
         <input
           type="text"
-          className="focus:bg-pink-100"
+          className="focus:bg-pink-100 border-2 h-9 w-96 "
           placeholder="search"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)
@@ -52,14 +52,14 @@ const Body = () => {
 
         >
         </input>
-        <button className="search-button px-2 bg-red-500 m-1 rounded-md hover:bg-pink-400" onClick={() => {
+        <button className="  bg-orange-500 h-9 text-white" onClick={() => {
           // console.log(searchText)
           const data = filterData(searchText, allrestaurent)
           console.log(data)
           setfilterRestaurent(data)
         }
         }>search</button>
-        <input value={user.email} onChange={e => setUser({
+        {/* <input value={user.email} onChange={e => setUser({
           ...user,
           email: e.target.value
         })}></input>
@@ -67,9 +67,9 @@ const Body = () => {
           ...user,
           name: e.target.value,
 
-        })}></input>
+        })}></input> */}
       </div>
-      <div className="flex flex-wrap bg-green-100">
+      <div className="flex flex-wrap bg-gray-400">
         {filterrestaurent?.map((restaurentList) => {
           return <Link to={"/restaurent/" + restaurentList.info.id} key={restaurentList.info.id}><Restrocard {...restaurentList.info} /></Link>
         })}

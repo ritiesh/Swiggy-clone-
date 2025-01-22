@@ -18,7 +18,7 @@ const Header = () => {
   const cartItems=useSelector(store=>store.cart.items)
   console.log(cartItems)
   return (
-    <div className="flex justify-between bg-green-100 shadow-md">
+    <div className="flex justify-between bg-white shadow-md">
       <Title />
       <div>
         <ul className="flex py-10">
@@ -26,13 +26,15 @@ const Header = () => {
           <Link to="/about" ><li className="px-2">About</li></Link>
           <Link to="/contact"><li className="px-2">contact</li></Link>
           
-          <Link to="/instamart"><li className="px-2">Instamart</li></Link>
+          {/* <Link to="/instamart"><li className="px-2">Instamart</li></Link> */}
           <Link to="/cart"><li className="px-2">cart - {cartItems.length} items</li></Link>
         </ul>
       </div>
 
-      {isOnline ? '🟩' : '🔴'}
-      <p className="p-10 text-fuchsia-500 font-bold">{user.name}</p>
+      <div className="m-5 p-5">
+      {isOnline ? '💓' : '❣️'}
+      </div>
+      <p className="p-10 text-black-500 font-bold">Welcome,{user.name}</p>
       {loggedIn ? <button className="bg-green-500 m-7 w-20 rounded-lg" onClick={() => setLoggedIn(!loggedIn)}>Logout</button> : <button className="bg-red-500 m-7 w-20 rounded-lg" onClick={() => setLoggedIn(!loggedIn)}>Login</button>}
 
 

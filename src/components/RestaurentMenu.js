@@ -19,7 +19,7 @@ const RestaurentMenu = () => {
     totalRatingsString,
     cuisines,
     locality,
-    sla,
+    sla,areaName
   } = restaurent?.cards[2]?.card?.card?.info || {};
 
   const cards =
@@ -33,16 +33,18 @@ const RestaurentMenu = () => {
   }
 
   return (!restaurent) ? <Shimmer /> : (
-    <div className="flex p-2 m-2">
-      <div >
+    <div className="flex p-2 m-4">
+      <div className="w-96">
         <h1>Restaurent id:{id}</h1>
 
-        <h1>{restaurent.name}</h1>
+        <h1 className="font-bold text-base p-1">{name}</h1>
         <img src={IMG_URL + cloudinaryImageId} alt="logo" width={200} height={100}></img>
-        <h2>{restaurent.areaName}</h2>
-        <h2>{restaurent.avgRating}</h2>
+        <h2>{areaName}</h2>
+        <div className="bg-green-500 w-12  text-sm">
+      <p>{avgRatingString + " "}⭐</p>
       </div>
-      <div className="m-10 p-2">
+      </div>
+      <div className="m-10 p-2 w-4/5">
         <h1><b>Menu</b></h1>
         {itemCards.length ? (
           itemCards.map((item) => {
@@ -56,9 +58,17 @@ const RestaurentMenu = () => {
               description,
             } = item.card.info;
             return (
-              <div>
-            <h2>{name}</h2>
-            <button className="bg-green-500 text-white p-2 m-2" onClick={() => handleAddItem(item.card.info)}>AddItem</button>
+              <div className="border-2 p-2 m-1">
+                <div className="flex">
+                <div>
+            <h2 className="font-bold">{name}</h2>
+            <img src={IMG_URL + imageId} alt="logo" width={100} heigth></img>
+            <p>{description}</p>
+            </div>
+            <div>
+            <button className="bg-green-500 text-white p-2 m-2 " onClick={() => handleAddItem(item.card.info)}>AddItem</button>
+            </div>
+            </div>
             </div>)
           })) : <h2>No items available</h2>}
       </div>

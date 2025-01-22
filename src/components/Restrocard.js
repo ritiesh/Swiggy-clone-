@@ -1,17 +1,21 @@
 import { IMG_URL } from "../constant";
-import { useContext } from "react";
-import UserContext from "../utils/Usercontext";
+// import { useContext } from "react";
+// import UserContext from "../utils/Usercontext";
 
-const Restrocard = ({ cloudinaryImageId, name, avgRating, cuisines}) => {
-  const {user}=useContext(UserContext)
+const Restrocard = ({ cloudinaryImageId, name, avgRating, cuisines, areaName }) => {
+  // const {user}=useContext(UserContext)
   return (
-    <div className="w-52 bg-orange-400 m-5">
-      <img alt="none" src={IMG_URL + cloudinaryImageId}></img>
-      <h1 className="font-bold">{name}</h1>
-      <h2>{cuisines.join(", ")}</h2>
-      <h3>{avgRating}stars</h3>
-      <h4 className="font-bold">{user.name}-{user.email}</h4>
+    <div className="w-48 bg-white m-6 rounded-2xl h-72">
+      <img alt="none" src={IMG_URL + cloudinaryImageId} className="w-64 h-36"></img>
+      <h1 className="font-bold text-base p-1">{name}</h1>
+      <p className="p-1">{cuisines[0] + ","+ cuisines[1]}</p>
+     
+      <div className="bg-green-500 w-12 m-2 text-sm">
+      <p>{avgRating + " "}⭐</p>
+      </div>
       
+      {/* <h4 className="font-bold">{user.name}-{user.email}</h4> */}
+
     </div>
   )
 }

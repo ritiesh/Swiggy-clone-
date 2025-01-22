@@ -12,7 +12,7 @@ const Cart = () => {
     <div>
       <h1 className="p-2 font-bold">Cart - {cartItems.length} items</h1>
       <button className="p-2 bg-green-500 m-3 text-white" onClick={()=>handleCart()}>clear cart</button>
-      <div className="flex">
+      <div className="flex flex-wrap">
       {cartItems.map((item)=><FoodItem key={item.id}{...item} />)}
       </div>
     </div>
