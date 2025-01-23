@@ -5,16 +5,19 @@ import { IMG_URL } from "../constant";
 const Restrocard = ({ cloudinaryImageId, name, avgRating, cuisines, areaName }) => {
   // const {user}=useContext(UserContext)
   return (
-    <div className="w-48 bg-white m-6 rounded-2xl h-72">
-      <img alt="none" src={IMG_URL + cloudinaryImageId} className="w-64 h-36"></img>
-      <h1 className="font-bold text-base p-1">{name}</h1>
-      <p className="p-1">{cuisines[0] + ","+ cuisines[1]}</p>
+    <div className="w-64 bg-white m-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-200 h-80 overflow-hidden">
+
+      <img alt="none" src={IMG_URL + cloudinaryImageId} className="w-full h-40 rounded-t-2xl object-cover"></img>
+      <div className="p-4 flex flex-col justify-between h-40">
+      <h1 className="font-semibold text-lg text-gray-800 truncate">{name}</h1>
+      <p className="text-sm text-gray-500 truncate">{cuisines.join(",")}</p>
      
-      <div className="bg-green-500 w-12 m-2 text-sm">
+      <div className="px-2 py-1 text-sm font-bold text-black rounded">
       <p>{avgRating + " "}⭐</p>
       </div>
       
       {/* <h4 className="font-bold">{user.name}-{user.email}</h4> */}
+      </div>
 
     </div>
   )

@@ -9,10 +9,10 @@ const Cart = () => {
     dispatch(clearCart())
   }
   return (
-    <div>
-      <h1 className="p-2 font-bold">Cart - {cartItems.length} items</h1>
-      <button className="p-2 bg-green-500 m-3 text-white" onClick={()=>handleCart()}>clear cart</button>
-      <div className="flex flex-wrap">
+    <div className="p-6 bg-gray-50 min-h-screen">
+      <h1 className="text-2xl font-bold text-gray-800 mb-4">Cart - {cartItems.length} items</h1>
+      <button className="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition-colors" onClick={()=>handleCart()}>clear cart</button>
+      <div className="flex flex-wrap gap-6 mt-6">
       {cartItems.map((item)=><FoodItem key={item.id}{...item} />)}
       </div>
     </div>

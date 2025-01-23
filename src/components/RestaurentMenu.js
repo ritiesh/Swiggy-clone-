@@ -29,41 +29,44 @@ const RestaurentMenu = () => {
   }
 
   return (!restaurent) ? <Shimmer /> : (
-    <div className="flex p-2 m-4">
-      <div className="w-96">
-        <h1>Restaurent id:{id}</h1>
-
-        <h1 className="font-bold text-base p-1">{name}</h1>
-        <img src={IMG_URL + cloudinaryImageId} alt="logo" width={200} height={100}></img>
-        <h2>{areaName}</h2>
-        <div className="bg-green-500 w-12  text-sm">
+    <div className="flex flex-col lg:flex-row p-6 m-4 bg-gray-50 rounded-lg shadow-lg">
+      <div className="lg:w-1/3 w-full mb-6 lg:mb-0 p-4">
+        <h1 className="text-xl font-bold text-gray-800 mb-2">{name}</h1>
+        <img src={IMG_URL + cloudinaryImageId} alt="logo" className="w-64 h-36 rounded-lg object-cover mb-4"></img>
+        <p className="text-gray-600">📍{areaName}</p>
+        <div className="px-2 py-1 text-sm font-bold text-black rounded">
       <p>{avgRatingString + " "}⭐</p>
       </div>
       </div>
-      <div className="m-10 p-2 w-4/5">
-        <h1><b>Menu</b></h1>
+      <div className="lg:w-2/3 w-full p-4">
+        <h1 className="text-2xl font-bold text-gray-800 mb-4">Menu</h1>
         {itemCards.length ? (
           itemCards.map((item) => {
             const {
               
               name,
               imageId,
+              price,
+              defaultPrice,
               description,
             } = item.card.info;
             return (
-              <div className="border-2 p-2 m-1">
-                <div className="flex">
-                <div>
+              <div className="border rounded-lg p-4 mb-4 bg-white shadow-sm hover:shadow-md transition-shadow duration-200">
+                <div className="flex justify-between items-start">
+                <div className="w-3/4">
             <h2 className="font-bold">{name}</h2>
-            <img src={IMG_URL + imageId} alt="logo" width={100} heigth></img>
-            <p>{description}</p>
+            <img src={IMG_URL + imageId} alt="logo" className="w-24 h-24 rounded-lg object-cover"></img>
+            {price && <p className="text-gray-800 font-medium mt-2">₹  {price/100}.00</p>}
+            {defaultPrice && <p className="text-gray-800 font-medium mt-2">₹ {defaultPrice/100}.00</p>}
+            
+            <p className="text-gray-500 text-sm mt-1 truncate">{description}</p>
             </div>
             <div>
-            <button className="bg-green-500 text-white p-2 m-2 " onClick={() => handleAddItem(item.card.info)}>AddItem</button>
+            <button className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 transition-colors" onClick={() => handleAddItem(item.card.info)}>AddItem</button>
             </div>
             </div>
             </div>)
-          })) : <h2>No items available</h2>}
+          })) : <h2 className="text-gray-500 text-lg">No items available</h2>}
       </div>
 
 

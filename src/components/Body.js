@@ -41,18 +41,18 @@ const Body = () => {
 
   return (allrestaurent.length === 0) ? <Skimmer /> : (
     <>
-      <div className="px-2 py-2 my-2 m-96">
+      <div className="flex justify-center items-center py-6">
         <input
           type="text"
-          className="focus:bg-pink-100 border-2 h-9 w-96 "
-          placeholder="search"
+          className="border border-gray-300 focus:border-orange-500 focus:ring focus:ring-orange-200 rounded-lg h-12 w-full max-w-lg px-4 text-sm shadow-md outline-none transition-all duration-200"
+          placeholder="Search restaurents..."
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)
           }
 
         >
         </input>
-        <button className="  bg-orange-500 h-9 text-white" onClick={() => {
+        <button className="ml-2 bg-orange-500 hover:bg-orange-600 text-white font-medium px-6 py-3 rounded-lg shadow-md transition-all duration-200" onClick={() => {
           // console.log(searchText)
           const data = filterData(searchText, allrestaurent)
           console.log(data)
@@ -69,7 +69,7 @@ const Body = () => {
 
         })}></input> */}
       </div>
-      <div className="flex flex-wrap bg-gray-400">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 bg-gray-100">
         {filterrestaurent?.map((restaurentList) => {
           return <Link to={"/restaurent/" + restaurentList.info.id} key={restaurentList.info.id}><Restrocard {...restaurentList.info} /></Link>
         })}
