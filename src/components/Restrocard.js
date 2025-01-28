@@ -11,7 +11,7 @@ const Restrocard = ({ cloudinaryImageId, name, avgRating, cuisines, areaName }) 
       <div className="p-4 flex flex-col justify-between h-40">
       <h1 className="font-semibold text-lg text-gray-800 truncate">{name}</h1>
       <p className="text-sm text-gray-500 truncate">{cuisines.join(",")}</p>
-     
+      <p className="text-gray-600">📍{areaName}</p>
       <div className="px-2 py-1 text-sm font-bold text-black rounded">
       <p>{avgRating + " "}⭐</p>
       </div>

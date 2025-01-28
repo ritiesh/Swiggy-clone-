@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import { IMG_URL } from "../constant"
 import Shimmer from "./Shimmer"
 import useRestaurent from "../utils/useRestaurent.js"
-import { addItem } from "../utils/cartSlice.js"
+import { addItem, removeItem } from "../utils/cartSlice.js"
 import { useDispatch } from "react-redux"
 
 
@@ -28,7 +28,12 @@ const RestaurentMenu = () => {
     dispatch(addItem(item))
   }
 
-  return (!restaurent) ? <Shimmer /> : (
+  const handleRemoveItem=(item)=>{
+    dispatch(removeItem(item))
+
+  }
+
+  return (!restaurent) ? <Shimmer /> : 
     <div className="flex flex-col lg:flex-row p-6 m-4 bg-gray-50 rounded-lg shadow-lg">
       <div className="lg:w-1/3 w-full mb-6 lg:mb-0 p-4">
         <h1 className="text-xl font-bold text-gray-800 mb-2">{name}</h1>
@@ -62,7 +67,11 @@ const RestaurentMenu = () => {
             <p className="text-gray-500 text-sm mt-1 truncate">{description}</p>
             </div>
             <div>
-            <button className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 transition-colors" onClick={() => handleAddItem(item.card.info)}>AddItem</button>
+            <button className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 transition-colors m-1" onClick={() => handleAddItem(item.card.info)}>+</button>
+
+            <button className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 transition-colors m-1" onClick={()=> handleRemoveItem(item.card.info.name)}>
+              -
+            </button>
             </div>
             </div>
             </div>)
@@ -71,6 +80,6 @@ const RestaurentMenu = () => {
 
 
     </div>
-  )
+  
 }
 export default RestaurentMenu;
